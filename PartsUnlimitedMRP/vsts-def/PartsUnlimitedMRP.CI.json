@@ -1,0 +1,919 @@
+{
+   "version":"0.3",
+   "definition":{
+      "build":[
+         {
+            "enabled":true,
+            "continueOnError":false,
+            "alwaysRun":false,
+            "displayName":"IntegrationService",
+            "timeoutInMinutes":0,
+            "task":{
+               "id":"8d8eebd8-2b94-4c97-85af-839254cc6da4",
+               "versionSpec":"1.*",
+               "definitionType":"task"
+            },
+            "inputs":{
+               "wrapperScript":"src/Backend/IntegrationService/gradlew",
+               "options":"",
+               "tasks":"build",
+               "cwd":"src/Backend/IntegrationService",
+               "publishJUnitResults":"false",
+               "testResultsFiles":"**/build/test-results/TEST-*.xml",
+               "testRunTitle":"",
+               "codeCoverageTool":"None",
+               "classFilesDirectories":"build/classes/main/",
+               "classFilter":"",
+               "failIfCoverageEmpty":"false",
+               "javaHomeSelection":"JDKVersion",
+               "jdkVersion":"default",
+               "jdkUserInputPath":"",
+               "jdkArchitecture":"x86",
+               "gradleOpts":"-Xmx1024m",
+               "sqAnalysisEnabled":"false",
+               "sqConnectedServiceName":"",
+               "sqProjectName":"",
+               "sqProjectKey":"",
+               "sqProjectVersion":"",
+               "sqDbDetailsRequired":"false",
+               "sqDbUrl":"",
+               "sqDbUsername":"",
+               "sqDbPassword":"",
+               "sqAnalysisIncludeFullReport":"true",
+               "sqAnalysisBreakBuildIfQualityGateFailed":"",
+               "checkstyleAnalysisEnabled":"false",
+               "findbugsAnalysisEnabled":"false",
+               "pmdAnalysisEnabled":"false"
+            }
+         },
+         {
+            "enabled":true,
+            "continueOnError":false,
+            "alwaysRun":false,
+            "displayName":"OrderService",
+            "timeoutInMinutes":0,
+            "task":{
+               "id":"8d8eebd8-2b94-4c97-85af-839254cc6da4",
+               "versionSpec":"1.*",
+               "definitionType":"task"
+            },
+            "inputs":{
+               "wrapperScript":"src/Backend/OrderService/gradlew",
+               "options":"",
+               "tasks":"build",
+               "cwd":"src/Backend/OrderService",
+               "publishJUnitResults":"true",
+               "testResultsFiles":"**/TEST-*.xml",
+               "testRunTitle":"",
+               "codeCoverageTool":"None",
+               "classFilesDirectories":"build/classes/main/",
+               "classFilter":"",
+               "failIfCoverageEmpty":"false",
+               "javaHomeSelection":"JDKVersion",
+               "jdkVersion":"default",
+               "jdkUserInputPath":"",
+               "jdkArchitecture":"x86",
+               "gradleOpts":"-Xmx1024m",
+               "sqAnalysisEnabled":"false",
+               "sqConnectedServiceName":"",
+               "sqProjectName":"",
+               "sqProjectKey":"",
+               "sqProjectVersion":"",
+               "sqDbDetailsRequired":"false",
+               "sqDbUrl":"",
+               "sqDbUsername":"",
+               "sqDbPassword":"",
+               "sqAnalysisIncludeFullReport":"true",
+               "sqAnalysisBreakBuildIfQualityGateFailed":"",
+               "checkstyleAnalysisEnabled":"false",
+               "findbugsAnalysisEnabled":"false",
+               "pmdAnalysisEnabled":"false"
+            }
+         },
+         {
+            "enabled":true,
+            "continueOnError":false,
+            "alwaysRun":false,
+            "displayName":"Clients",
+            "timeoutInMinutes":0,
+            "task":{
+               "id":"8d8eebd8-2b94-4c97-85af-839254cc6da4",
+               "versionSpec":"1.*",
+               "definitionType":"task"
+            },
+            "inputs":{
+               "wrapperScript":"src/Clients/gradlew",
+               "options":"",
+               "tasks":"build",
+               "cwd":"src/Clients",
+               "publishJUnitResults":"false",
+               "testResultsFiles":"**/build/test-results/TEST-*.xml",
+               "testRunTitle":"",
+               "codeCoverageTool":"None",
+               "classFilesDirectories":"build/classes/main/",
+               "classFilter":"",
+               "failIfCoverageEmpty":"false",
+               "javaHomeSelection":"JDKVersion",
+               "jdkVersion":"default",
+               "jdkUserInputPath":"",
+               "jdkArchitecture":"x86",
+               "gradleOpts":"-Xmx1024m",
+               "sqAnalysisEnabled":"false",
+               "sqConnectedServiceName":"",
+               "sqProjectName":"",
+               "sqProjectKey":"",
+               "sqProjectVersion":"",
+               "sqDbDetailsRequired":"false",
+               "sqDbUrl":"",
+               "sqDbUsername":"",
+               "sqDbPassword":"",
+               "sqAnalysisIncludeFullReport":"true",
+               "sqAnalysisBreakBuildIfQualityGateFailed":"",
+               "checkstyleAnalysisEnabled":"false",
+               "findbugsAnalysisEnabled":"false",
+               "pmdAnalysisEnabled":"false"
+            }
+         },
+         {
+            "enabled":true,
+            "continueOnError":false,
+            "alwaysRun":false,
+            "displayName":"Copy Publish Artifact: drop",
+            "timeoutInMinutes":0,
+            "task":{
+               "id":"1d341bb0-2106-458c-8422-d00bcea6512a",
+               "versionSpec":"1.*",
+               "definitionType":"task"
+            },
+            "inputs":{
+               "CopyRoot":"$(Build.SourcesDirectory)",
+               "Contents":"**/build/libs/!(buildSrc)*.?ar",
+               "ArtifactName":"drop",
+               "ArtifactType":"Container",
+               "TargetPath":"\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)"
+            }
+         },
+         {
+            "enabled":true,
+            "continueOnError":false,
+            "alwaysRun":false,
+            "displayName":"Copy Publish Artifact: deploy ",
+            "timeoutInMinutes":0,
+            "task":{
+               "id":"1d341bb0-2106-458c-8422-d00bcea6512a",
+               "versionSpec":"1.*",
+               "definitionType":"task"
+            },
+            "inputs":{
+               "CopyRoot":"$(Build.SourcesDirectory)",
+               "Contents":"**/deploy/SSH-MRP-Artifacts.ps1\n**/deploy/deploy_mrp_app.sh\n**/deploy/MongoRecords.js",
+               "ArtifactName":"deploy ",
+               "ArtifactType":"Container",
+               "TargetPath":"\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)"
+            }
+         },
+         {
+            "enabled":true,
+            "continueOnError":false,
+            "alwaysRun":false,
+            "displayName":"Copy Publish Artifact: env",
+            "timeoutInMinutes":0,
+            "task":{
+               "id":"1d341bb0-2106-458c-8422-d00bcea6512a",
+               "versionSpec":"1.*",
+               "definitionType":"task"
+            },
+            "inputs":{
+               "CopyRoot":"$(Build.SourcesDirectory)/env",
+               "Contents":"**",
+               "ArtifactName":"env",
+               "ArtifactType":"Container",
+               "TargetPath":"\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)"
+            }
+         }
+      ],
+      "options":[
+         {
+            "enabled":false,
+            "definition":{
+               "id":"7c555368-ca64-4199-add6-9ebaf0b0137d"
+            },
+            "inputs":{
+               "multipliers":"[]",
+               "parallel":"false",
+               "continueOnError":"true",
+               "additionalFields":"{}"
+            }
+         },
+         {
+            "enabled":false,
+            "definition":{
+               "id":"a9db38f9-9fdc-478c-b0f9-464221e58316"
+            },
+            "inputs":{
+               "workItemType":"1064047",
+               "assignToRequestor":"true",
+               "additionalFields":"{}"
+            }
+         },
+         {
+            "enabled":false,
+            "definition":{
+               "id":"57578776-4c22-4526-aeb0-86b6da17ee9c"
+            },
+            "inputs":{
+
+            }
+         },
+         {
+            "enabled":false,
+            "definition":{
+               "id":"5d58cc01-7c75-450c-be18-a388ddb129ec"
+            },
+            "inputs":{
+               "branchFilters":"[\"+refs/heads/*\"]",
+               "additionalFields":"{}"
+            }
+         }
+      ],
+      "triggers":[
+         {
+            "branchFilters":[
+               "+refs/heads/master"
+            ],
+            "pathFilters":[
+
+            ],
+            "batchChanges":true,
+            "maxConcurrentBuildsPerBranch":1,
+            "pollingInterval":0,
+            "triggerType":2
+         }
+      ],
+      "variables":{
+         "system.debug":{
+            "value":"false",
+            "allowOverride":true
+         }
+      },
+      "retentionRules":[
+         {
+            "branches":[
+               "+refs/heads/*"
+            ],
+            "artifacts":[
+
+            ],
+            "artifactTypesToDelete":[
+               "FilePath",
+               "SymbolStore"
+            ],
+            "daysToKeep":10,
+            "minimumToKeep":1,
+            "deleteBuildRecord":true,
+            "deleteTestResults":true
+         }
+      ],
+      "_links":{
+         "self":{
+            "href":"https://daporo.visualstudio.com/2d9190cf-f7e0-4165-a8d2-9817da4fc8ae/_apis/build/Definitions/66"
+         },
+         "web":{
+            "href":"https://daporo.visualstudio.com/_permalink/_build/index?collectionId=e92a582c-612c-42ad-a123-c9b7b744a44c&projectId=2d9190cf-f7e0-4165-a8d2-9817da4fc8ae&definitionId=66"
+         },
+         "editor":{
+            "href":"https://daporo.visualstudio.com/_permalink/_build/definitionEditor?collectionId=e92a582c-612c-42ad-a123-c9b7b744a44c&projectId=2d9190cf-f7e0-4165-a8d2-9817da4fc8ae&definitionId=66"
+         },
+         "badge":{
+            "href":"https://daporo.visualstudio.com/_apis/public/build/definitions/2d9190cf-f7e0-4165-a8d2-9817da4fc8ae/66/badge"
+         }
+      },
+      "buildNumberFormat":"$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.rrr)",
+      "jobAuthorizationScope":1,
+      "jobTimeoutInMinutes":60,
+      "jobCancelTimeoutInMinutes":5,
+      "badgeEnabled":true,
+      "repository":{
+         "properties":{
+            "cleanOptions":"0",
+            "labelSources":"0",
+            "labelSourcesFormat":"$(build.buildNumber)",
+            "reportBuildStatus":"true",
+            "gitLfsSupport":"false",
+            "skipSyncSource":"false",
+            "fetchDepth":"0",
+            "checkoutNestedSubmodules":"false"
+         },
+         "id":"13213b26-d2ab-4d28-9c59-6b0bc9d92cd8",
+         "type":"TfsGit",
+         "name":"PartsUnlimitedMRP",
+         "url":"https://daporo.visualstudio.com/Playground/_git/PartsUnlimitedMRP",
+         "defaultBranch":"refs/heads/master",
+         "clean":"false",
+         "checkoutSubmodules":false
+      },
+      "processParameters":{
+         "inputs":[
+
+         ]
+      },
+      "quality":1,
+      "authoredBy":{
+         "id":"ac3cd12f-4181-4c1a-971b-1b95e33bc012",
+         "displayName":"Dariusz Porowski",
+         "uniqueName":"daporo@microsoft.com",
+         "url":"https://app.vssps.visualstudio.com/Af839bb71-bf1f-4531-b5db-b56c31b547ae/_apis/Identities/ac3cd12f-4181-4c1a-971b-1b95e33bc012",
+         "imageUrl":"https://daporo.visualstudio.com/_api/_common/identityImage?id=ac3cd12f-4181-4c1a-971b-1b95e33bc012"
+      },
+      "queue":{
+         "id":174,
+         "name":"Hosted VS2017",
+         "pool":{
+            "id":8,
+            "name":"Hosted VS2017",
+            "isHosted":true
+         }
+      },
+      "id":66,
+      "name":"PartsUnlimitedMRP.CI",
+      "url":"https://daporo.visualstudio.com/2d9190cf-f7e0-4165-a8d2-9817da4fc8ae/_apis/build/Definitions/66",
+      "uri":"vstfs:///Build/Definition/66",
+      "path":"\\PartsUnlimitedMRP",
+      "type":2,
+      "revision":6,
+      "createdDate":"2017-06-05T09:33:19.307Z",
+      "project":{
+         "id":"2d9190cf-f7e0-4165-a8d2-9817da4fc8ae",
+         "name":"Playground",
+         "url":"https://daporo.visualstudio.com/_apis/projects/2d9190cf-f7e0-4165-a8d2-9817da4fc8ae",
+         "state":"wellFormed",
+         "revision":380,
+         "visibility":0
+      }
+   },
+   "metaData":{
+      "customTasks":[
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Release Annotation",
+            "id":"f1d5ce28-3e2d-4525-8cb5-4fa428cba643",
+            "version":"1.0.13"
+         },
+         {
+            "author":"Geek Learning",
+            "friendlyName":"Azure SQL Database Restore",
+            "id":"56efeadb-7df6-4dac-8163-af8e07298c8b",
+            "version":"1.3.1999"
+         },
+         {
+            "author":"ms-devlabs",
+            "friendlyName":"Shell++",
+            "id":"10f1f9a1-74b0-47ab-87bf-e3c9c68e8b0d",
+            "version":"0.3.1"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Google Play - Promote",
+            "id":"4dae1f76-29d3-482f-97d5-e3189a8347c2",
+            "version":"1.112.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"CredScan",
+            "id":"ea576cd4-c61f-48f8-97e7-a3cb07b90a6f",
+            "version":"2.56.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"BinScope (Deprecated)",
+            "id":"758aef05-63f2-46d0-9ea5-8627a9b5dacb",
+            "version":"2.50.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"TSLint",
+            "id":"ae990502-fa2f-4d19-822c-c799d1179fb3",
+            "version":"1.18.3"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Tokenize File",
+            "id":"6d9895eb-8056-4111-b4b3-7b80fd383e44",
+            "version":"1.2.169"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Tokenize File",
+            "id":"6d9895eb-8056-4111-b4b3-7b80fd383e44",
+            "version":"0.0.86"
+         },
+         {
+            "author":"Redgate Software",
+            "friendlyName":"SQL Clone - Create clone",
+            "id":"808a505f-580f-413b-a3df-43a6a4fc74ce",
+            "version":"1.0.1"
+         },
+         {
+            "author":"R. van Osnabrugge",
+            "friendlyName":"Send email",
+            "id":"a41d805b-80c4-4b20-924d-b8d1cca9a43f",
+            "version":"1.1.1029"
+         },
+         {
+            "author":"Geek Learning",
+            "friendlyName":"Azure Web App Start",
+            "id":"df1611d6-6aee-40b5-8af6-143af94d9f3e",
+            "version":"1.3.1999"
+         },
+         {
+            "author":"Guillaume Rouchon",
+            "friendlyName":"XDT Transform",
+            "id":"98012758-c053-475d-9d6a-fd0773c39e09",
+            "version":"2.0.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Deploy to Apache Tomcat",
+            "id":"5d93dbe2-e57f-4b7c-a872-1e6b80a01904",
+            "version":"0.1.3"
+         },
+         {
+            "author":"Jesse Houwing",
+            "friendlyName":"Expand Variable [DEPRECATED] ",
+            "id":"5f8f1adf-42bd-442d-8a0f-ae009a66b99e",
+            "version":"1.0.1320"
+         },
+         {
+            "author":"Geek Learning",
+            "friendlyName":"Azure SQL Database Incremental Deployment",
+            "id":"fc7c81bb-92a2-4750-a0c9-d0d88c749ac0",
+            "version":"1.3.1999"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Zamboni Upload",
+            "id":"dfe62539-286e-4241-b535-4881cae4b50c",
+            "version":"0.113.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"SDL Native Rules (Beta)",
+            "id":"8d58a427-d09e-4313-a061-9f2e455d86f8",
+            "version":"2.49.3"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Coverage Gate",
+            "id":"0b6f0167-8389-4db8-89c6-4ae7688cd15a",
+            "version":"1.2.169"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Coverage Gate",
+            "id":"0b6f0167-8389-4db8-89c6-4ae7688cd15a",
+            "version":"0.0.86"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"TSA Upload",
+            "id":"3da26988-bb64-4a23-8f06-45531d297dae",
+            "version":"1.59.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"ModernCop",
+            "id":"160c5a60-c71f-4240-b7df-17dd9388828c",
+            "version":"2.50.3"
+         },
+         {
+            "author":"Redgate Software",
+            "friendlyName":"SQL Clone - Delete clone",
+            "id":"312f9a42-d1c9-4b76-a70b-304f6391b3f4",
+            "version":"1.0.1"
+         },
+         {
+            "author":"Redgate Software",
+            "friendlyName":"Redgate DLM Automation 2: Build",
+            "id":"7345fe1b-d099-46f0-a0d1-7292cd17feee",
+            "version":"2.0.6"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Replace Tokens",
+            "id":"9240b5c1-a1b2-4799-9325-e071c63236fb",
+            "version":"1.2.169"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Replace Tokens",
+            "id":"9240b5c1-a1b2-4799-9325-e071c63236fb",
+            "version":"0.0.86"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"FxCop",
+            "id":"0f6c0e13-d60d-4668-b829-0c875e47a5bb",
+            "version":"2.51.3"
+         },
+         {
+            "author":"Redgate Software",
+            "friendlyName":"Run tSQLt tests",
+            "id":"48c25102-90f9-4de6-891c-0269407ff3ba",
+            "version":"0.6.7"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Drop Synchronization",
+            "id":"2da8a4e0-87a9-4156-b3d7-7751b1354729",
+            "version":"1.8.3"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"(deprecated) Azure Web Deploy",
+            "id":"5c9ea8be-e6fb-4ae7-905e-67bfd6741967",
+            "version":"1.1.78"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"(deprecated) Azure Web Deploy",
+            "id":"5c9ea8be-e6fb-4ae7-905e-67bfd6741967",
+            "version":"0.1.169"
+         },
+         {
+            "author":"Geek Learning",
+            "friendlyName":"Azure Web App Stop",
+            "id":"a3f35bb6-5341-413a-8091-10f93d390bb5",
+            "version":"1.3.1999"
+         },
+         {
+            "author":"Dariusz Porowski",
+            "friendlyName":"Run MySQL command",
+            "id":"05cb6c51-3bab-4bcc-a112-d6ff7602d8a4",
+            "version":"0.0.1"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Azure DevTest Labs Create Custom Image",
+            "id":"476a3548-c6f0-4f7d-849f-6ad9ee28c254",
+            "version":"1.0.16"
+         },
+         {
+            "author":"Geek Learning",
+            "friendlyName":"Azure Copy Files",
+            "id":"d66b2794-5008-46fc-ad96-77d90c2e5615",
+            "version":"1.3.1999"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Publish Security Analysis Logs",
+            "id":"4096c760-3a8a-435d-9689-88c0311bbc0e",
+            "version":"2.50.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Install Extension",
+            "id":"47a0f73c-f8e6-4fc5-a759-4d560031ef75",
+            "version":"1.1.44"
+         },
+         {
+            "author":"ms-devlabs",
+            "friendlyName":"Rollback PowerShell",
+            "id":"abc5c778-e949-4435-b156-b00c4ede3fcc",
+            "version":"1.1.2"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Tag Build or Release",
+            "id":"5d741236-331c-4461-82a2-9d55eb91bb91",
+            "version":"0.1.169"
+         },
+         {
+            "author":"Jesse Houwing",
+            "friendlyName":"Transform value ",
+            "id":"9ccfb3bb-7ec0-4626-8599-164b1f95f933",
+            "version":"1.0.1320"
+         },
+         {
+            "author":"ms-devlabs",
+            "friendlyName":"Tokenize with XPath/Regular expressions",
+            "id":"57ee7959-ba10-47a7-8adb-19d032873133",
+            "version":"2.0.2"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Ipa Resign",
+            "id":"cbbf7f14-c386-4c1f-80a3-fe500e2bd977",
+            "version":"1.115.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Apple App Store Promote",
+            "id":"cbbf7f14-c386-4c1f-80a3-fe500e2bd976",
+            "version":"1.116.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Vulnerability Assessment (Beta)",
+            "id":"90956794-f178-4f7f-b699-970f49f4c780",
+            "version":"0.17.3"
+         },
+         {
+            "author":"Jesse Houwing",
+            "friendlyName":"Set Variable ",
+            "id":"3ca44a28-62de-4c60-8d77-a99065b95a8a",
+            "version":"1.0.1320"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Query Extension Version",
+            "id":"5c6fa59e-1d5a-4516-9127-b9efd05df306",
+            "version":"1.1.44"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Azure DevTest Labs Delete VM",
+            "id":"ae5dfa8c-0c57-41e8-bfdf-5b83ac08d896",
+            "version":"1.0.7"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Apple App Store Release",
+            "id":"2e371150-da5e-11e5-83da-0943b1acc572",
+            "version":"1.116.0"
+         },
+         {
+            "author":"Kees Schollaart",
+            "friendlyName":"ARM Outputs",
+            "id":"584bcff2-3353-4f11-872b-6ba01267a972",
+            "version":"1.15.0"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"(deprecated) Docker Publish",
+            "id":"639b8e0c-2c2c-41e7-b822-4d03aefcb92b",
+            "version":"1.1.78"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"(deprecated) Docker Publish",
+            "id":"639b8e0c-2c2c-41e7-b822-4d03aefcb92b",
+            "version":"0.1.169"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"APIScan",
+            "id":"9adea2b1-3752-438c-80c6-a6f0a812abdd",
+            "version":"1.49.3"
+         },
+         {
+            "author":"Dariusz Porowski",
+            "friendlyName":"Run MySQL script",
+            "id":"56a2a841-3810-427a-a5a2-6392ae239f3c",
+            "version":"0.0.1"
+         },
+         {
+            "author":"Jakob Ehn",
+            "friendlyName":"Publish GitHub Release",
+            "id":"52a55b38-da88-4272-9cb5-8627a5197311",
+            "version":"0.10.3"
+         },
+         {
+            "author":"Geek Learning",
+            "friendlyName":"Azure Web App Slots Swap",
+            "id":"8698e535-d070-4a41-8c0e-4624d6283f05",
+            "version":"1.3.1999"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"BinSkim",
+            "id":"3056813a-40e9-4b2f-8f6b-612d1bc4e045",
+            "version":"3.49.3"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Azure Web App Route Traffic",
+            "id":"aafd0d72-ff21-4439-b282-44be5e9d4d90",
+            "version":"0.1.169"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"AntiMalware Scanner",
+            "id":"3fc510b1-a9ae-488e-95cd-8f6811fc7c1f",
+            "version":"3.41.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"PhoneGap Command",
+            "id":"5d36155d-bdb2-4d7b-b2a6-f9244e164c3e",
+            "version":"1.3.11"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"DacPac Schema Compare",
+            "id":"1ebf2967-63b3-4372-89f7-6799108a22f0",
+            "version":"1.2.169"
+         },
+         {
+            "author":"Tsuyoshi Ushio",
+            "friendlyName":"Kubernetes Apply Task",
+            "id":"9bf07640-ed9b-11e6-8ac1-6b0636b1490f",
+            "version":"0.1.32"
+         },
+         {
+            "author":"Tsuyoshi Ushio",
+            "friendlyName":"Kubernetes Apply Task",
+            "id":"9bf07640-ed9b-11e6-8ac1-6b0636b1490f",
+            "version":"2.0.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Post Analysis",
+            "id":"f5679091-e6da-4974-a8dc-0eec03a8ea63",
+            "version":"1.49.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"HockeyApp",
+            "id":"53bb2e90-4b6e-11e5-89d9-2903d3f04d3f",
+            "version":"1.119.0"
+         },
+         {
+            "author":"Microsoft Premier Services",
+            "friendlyName":"Post Build Cleanup",
+            "id":"175c8a10-0ef0-11e7-936d-2100de00518d",
+            "version":"2.0.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Ionic Command",
+            "id":"e144b169-0587-4146-a3fc-d9d3432a512a",
+            "version":"1.3.11"
+         },
+         {
+            "author":"ms-devlabs",
+            "friendlyName":"UnZip A package",
+            "id":"f3256ce0-a7ba-11e5-9412-1587795ee05c",
+            "version":"0.1.1"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Google Play - Increase Rollout",
+            "id":"f8c97cf9-4e17-4244-b0fb-f540cea78153",
+            "version":"1.112.0"
+         },
+         {
+            "author":"ms-devlabs",
+            "friendlyName":"Zip A Folder",
+            "id":"dc66d2f0-a7ba-11e5-ae62-3deab86d85e3",
+            "version":"0.2.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"CodeMetrics",
+            "id":"d72a577f-47a3-4634-86be-d7d8a535dd1a",
+            "version":"1.20.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Publish Extension",
+            "id":"631511b4-50ab-47c8-b766-7ae2aa672733",
+            "version":"1.1.44"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Auto Applicability",
+            "id":"7f579cc9-a33b-4061-a506-9702d139f221",
+            "version":"1.28.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"PoliCheck",
+            "id":"d785890c-0d0d-46bd-8167-8fa9d49990c7",
+            "version":"1.49.3"
+         },
+         {
+            "author":"Dariusz Porowski",
+            "friendlyName":"Run MySQL scripts",
+            "id":"7ec92332-7440-4444-8691-506996f60b13",
+            "version":"0.0.1"
+         },
+         {
+            "author":"Guillaume Rouchon",
+            "friendlyName":"Replace Tokens",
+            "id":"a8515ec8-7254-4ffd-912c-86772e2b5962",
+            "version":"2.1.0"
+         },
+         {
+            "author":"Redgate Software",
+            "friendlyName":"Redgate DLM Automation 2: Release",
+            "id":"c1177c17-3934-4005-ba89-a4549fe4f0a1",
+            "version":"2.1.4"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Version Assemblies",
+            "id":"5b4d14d0-3868-11e4-a31d-3f0a2d8202f4",
+            "version":"1.1.78"
+         },
+         {
+            "author":"Colin Dembovsky (colinsalmcorner.com)",
+            "friendlyName":"Version Assemblies",
+            "id":"5b4d14d0-3868-11e4-a31d-3f0a2d8202f4",
+            "version":"2.2.169"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Package Extension",
+            "id":"e59022e0-667a-11e5-ad4c-dd75b69a0d2c",
+            "version":"1.1.44"
+         },
+         {
+            "author":"Tsuyoshi Ushio",
+            "friendlyName":"Kubernetes General Task",
+            "id":"c23cfb10-e7fc-11e6-a48f-4344fe0f2ea4",
+            "version":"0.1.32"
+         },
+         {
+            "author":"Tsuyoshi Ushio",
+            "friendlyName":"Kubernetes General Task",
+            "id":"c23cfb10-e7fc-11e6-a48f-4344fe0f2ea4",
+            "version":"2.0.3"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Cordova Build",
+            "id":"70e94267-15dc-434d-8973-023d766825d7",
+            "version":"1.3.11"
+         },
+         {
+            "author":"Martin Hinshelwood",
+            "friendlyName":"Git Publish Task",
+            "id":"36cbb8f8-6f18-4b55-bdd7-3ecf87044b08",
+            "version":"0.4.0"
+         },
+         {
+            "author":"Martin Hinshelwood",
+            "friendlyName":"Git Publish Task",
+            "id":"36cbb8f8-6f18-4b55-bdd7-3ecf87044b08",
+            "version":"1.1.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Share Extension",
+            "id":"22683a08-0dbe-4fe8-8c53-4606fcb32752",
+            "version":"1.1.44"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Google Play - Release",
+            "id":"8cf7cac0-620b-11e5-b4cf-8565e60f4d27",
+            "version":"1.117.6"
+         },
+         {
+            "author":"ms-devlabs",
+            "friendlyName":"Powershell++",
+            "id":"4c073640-a478-11e5-a7e5-850fa42c7a74",
+            "version":"0.2.0"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Fortify SCA",
+            "id":"ac1ecfb0-8518-4eac-afa2-46bec4b97873",
+            "version":"3.50.3"
+         },
+         {
+            "author":"Geek Learning",
+            "friendlyName":"Azure SQL Execute Query",
+            "id":"a93d571d-f32c-4fe7-a63a-3599dddd5279",
+            "version":"1.3.1999"
+         },
+         {
+            "author":"Redgate Software",
+            "friendlyName":"SQL Clone - Create image",
+            "id":"64fb7e5b-b8bf-49f0-bb5a-b327aa24adf5",
+            "version":"1.0.1"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Cordova Command",
+            "id":"61ec6339-4a6a-4a69-875e-5a6f4db157a2",
+            "version":"1.3.11"
+         },
+         {
+            "author":"Redgate Software",
+            "friendlyName":"Deploy ReadyRoll Database Package",
+            "id":"34b3194a-2f58-4844-a8c3-655cc2802e84",
+            "version":"0.6.13"
+         },
+         {
+            "author":"Microsoft Corporation",
+            "friendlyName":"Azure DevTest Labs Create VM",
+            "id":"65b23b71-d518-4074-8370-cf84ebfc909b",
+            "version":"1.0.13"
+         }
+      ],
+      "serviceEndpoints":[
+
+      ]
+   }
+}
